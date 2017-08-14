@@ -16,11 +16,15 @@ export class GithubUsersProvider {
   githubApiUrl = 'https://api.github.com';
 
   constructor(public http: Http) {
-    console.log('Hello GithubUsers Provider');
   }
   // Load all github users
   load(): Observable<User[]> {
     return this.http.get(`${this.githubApiUrl}/users`)
     .map(res => <User[]>res.json());
+  }
+
+  loadDetails(login: string): Observable<User>{
+    return this.http.get(`${this.githubApiUrl}/users/${login}`)
+    .map(res =>  <User>(res.json()))
   }
 }

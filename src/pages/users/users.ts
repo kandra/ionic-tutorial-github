@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
 import { GithubUsersProvider } from '../../providers/github-users/github-users';
 
+import { UserDetailsPage } from '../user-details/user-details';
+
 /**
  * Generated class for the UsersPage page.
  *
@@ -26,8 +28,9 @@ export class UsersPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UsersPage');
+  goToDetails(login: string){
+    console.log(login);
+    this.navCtrl.push(UserDetailsPage, {login});
   }
 
 }
